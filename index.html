@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NASFAT Peel Region | Muslim Community in Peel</title>
+  <meta name="description" content="Prayer information, events, lectures, volunteering and community updates from NASFAT Peel Region." />
+  <meta name="theme-color" content="#0d4f45" />
+  <meta name="color-scheme" content="light dark" />
+  <meta property="og:title" content="NASFAT Peel Region" />
+  <meta property="og:description" content="Prayer information, events and community updates from NASFAT Peel Region." />
+  <meta property="og:type" content="website" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="icon" href="/logo-128.jpg" type="image/jpeg" />
+  <style>
+    html,body{margin:0;padding:0;background:#F3F0E6}#root{min-height:100vh}
+    #boot-status{min-height:100vh;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;font-family:system-ui,sans-serif;color:#12201D;text-align:center;padding:24px;box-sizing:border-box}
+    #boot-error{display:none;max-width:480px;background:#fdf1ec;border:1px solid #7A2E2E;border-radius:6px;padding:16px;font-size:14px;line-height:1.5}
+    .skeleton{position:relative;overflow:hidden;background:rgba(122,139,132,.16);border-radius:6px}.skeleton::after{content:"";position:absolute;inset:0;transform:translateX(-100%);background:linear-gradient(90deg,transparent,rgba(255,255,255,.42),transparent);animation:skeleton-shimmer 1.35s infinite}@keyframes skeleton-shimmer{100%{transform:translateX(100%)}}:focus-visible{outline:3px solid #D8AE6C;outline-offset:3px}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+  </style>
+</head>
+<body>
+  <div id="root"><div id="boot-status"><div>Loading NASFAT Peel Region…</div><div id="boot-error"></div></div></div>
+  <script>
+    function showBootError(msg){var el=document.getElementById("boot-error");if(!el)return;el.style.display="block";el.innerHTML="<strong>Something failed to load:</strong><br>"+msg+"<br><br>Try refreshing the page."}
+    window.addEventListener("error",function(e){if(e&&e.message)showBootError(e.message)});
+  </script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-storage-compat.js"></script>
+  <script>
+    (function(){const firebaseConfig={apiKey:"AIzaSyDMgttCTjm2bxPJZtGjAWexUTY1eLtsS5c",authDomain:"nasfat-peel-region.firebaseapp.com",projectId:"nasfat-peel-region",storageBucket:"nasfat-peel-region.firebasestorage.app",messagingSenderId:"643411569925",appId:"1:643411569925:web:0edf01e3a22f99e3241b6c"};firebase.initializeApp(firebaseConfig);const db=firebase.firestore();const auth=firebase.auth();const storage=firebase.storage?firebase.storage():null;const COLLECTION="storage_shared";window.firebaseAuth=auth;window.firebaseDb=db;window.firebaseStorage=storage;window.ADMIN_EMAIL="admin@nasfatpeelregion.org";window.storage={async get(key){const snap=await db.collection(COLLECTION).doc(key).get();if(!snap.exists)throw new Error(`No value found for key "${key}"`);return{key,value:snap.data().value,shared:true}},async set(key,value){await db.collection(COLLECTION).doc(key).set({value});return{key,value,shared:true}},async delete(key){const ref=db.collection(COLLECTION).doc(key);const snap=await ref.get();const existed=snap.exists;await ref.delete();return{key,deleted:existed,shared:true}},async list(prefix=""){const snap=await db.collection(COLLECTION).get();const keys=[];snap.forEach(doc=>{if(doc.id.startsWith(prefix))keys.push(doc.id)});return{keys,prefix,shared:true}},async getAllByPrefix(prefix=""){const snap=await db.collection(COLLECTION).get();const items=[];snap.forEach(doc=>{if(doc.id.startsWith(prefix))items.push({key:doc.id,value:doc.data().value})});return items}}})();
+  </script>
+  <script type="module" src="/src/main.jsx"></script>
+  <script>if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("/service-worker.js").catch(console.warn))}</script>
+</body>
+</html>
